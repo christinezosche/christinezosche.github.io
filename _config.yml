@@ -1,11 +1,11 @@
 # Site settings
-author: Christine Zosche
-title: 
+author: Christine
+title: Christine's Blog
 header-img: img/home-bg.png
 email: christine.zosche@gmail.com
-copyright_name: Christine Zosche
+copyright_name: Christine
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Software Engineering PT 4/13/20
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  christinezosche
