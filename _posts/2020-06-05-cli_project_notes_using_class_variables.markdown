@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "CLI project notes: Using class variables"
-date:       2020-06-05 19:00:21 +0000
+date:       2020-06-05 15:00:22 -0400
 permalink:  cli_project_notes_using_class_variables
 ---
 
