@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "CLI project notes: Using instance variables"
+title:      "CLI project notes: Using instance variables in a class"
 date:       2020-06-05 15:00:22 -0400
 permalink:  cli_project_notes_using_class_variables
 ---
