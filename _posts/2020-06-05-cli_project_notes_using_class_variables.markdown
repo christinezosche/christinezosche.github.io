@@ -44,7 +44,7 @@ Finally, I rewrote the "normal_exit" method to utilize the @sorted_house instanc
 
 ![](https://i.imgur.com/zYRsKSJl.png)
 
-Voila! Now, the user’s sorted house is stored in the @sorted_house instance variable, accessible to all methods called by this instance of the CLI class. If we instantiate a new CLI and run the “sort” method, @sorted_house will change to whatever house this new user is sorted into.
+Voila! Now, the user’s sorted house is stored in the @sorted_house instance variable, accessible to all instance methods called on this CLI object. If we instantiate a new CLI and run the “sort” method, @sorted_house will change to whatever house this new user is sorted into.
 
 ![](https://i.imgur.com/jlUHyQCl.png)
 
