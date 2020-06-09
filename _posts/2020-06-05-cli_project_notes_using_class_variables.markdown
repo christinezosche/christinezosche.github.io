@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "CLI project notes: Using class variables"
+title:      "CLI project notes: Using instance variables"
 date:       2020-06-05 15:00:22 -0400
 permalink:  cli_project_notes_using_class_variables
 ---
@@ -28,11 +28,11 @@ However, this approach created one (rather large) problem. As the CLI became mor
 
 ![](https://i.imgur.com/1Nq6Psyl.png)
 
-This was clunky and confusing. The sorted_house variable wasn’t even being used in most of these methods – it was just being passed around so it could be used in the exit method. This isn’t DRY. More importantly, if the application became even more complex, or if we needed to pass in other variables into these methods, this code would get impossibly confusing very quickly. There must be a better way! There is, and it’s one of the great things about Ruby object-oriented programming: a class variable.
+This was clunky and confusing. The sorted_house variable wasn’t even being used in most of these methods – it was just being passed around so it could be used in the exit method. This isn’t DRY. More importantly, if the application became even more complex, or if we needed to pass in other variables into these methods, this code would get impossibly confusing very quickly. There must be a better way! There is, and it’s one of the great things about Ruby object-oriented programming: an instance variable.
 
-The previous variable, sorted_house, had a limited scope – it could only be used within the method in which it was created, which is why it had to be manually passed into every other method in the CLI class. A class variable, however, has a broader scope -- it is accessible to the entire class, without needing to pass it into every method. Perfect!
+The previous variable, sorted_house, had a limited scope – it could only be used within the method in which it was created, which is why it had to be manually passed into every other method in the CLI class. An instance variable, however, has a broader scope -- it is accessible to all methods in our CLI object, without needing to pass it into every method. Perfect!
 
-Therefore, I assigned a new variable in the “sort” method: @@sorted_house.
+Therefore, I assigned a new variable in the “sort” method: @sorted_house.
 
 ![](https://i.imgur.com/31VoSMZl.png)
 
@@ -40,11 +40,11 @@ Then, I rewrote the other methods so that there was no need for them to take in 
 
 ![](https://i.imgur.com/5Oixowsl.png)
 
-Finally, I rewrote the "normal_exit" method to utilize the @@sorted_house variable.
+Finally, I rewrote the "normal_exit" method to utilize the @sorted_house variable.
 
 ![](https://i.imgur.com/fN0Rmn8m.png)
 
-Voila! Now, the user’s sorted house is stored in the @@sorted_house CLI class variable, accessible to all methods within the CLI class. If we instantiate a new CLI instance and run the “sort” method, @@sorted_house will change to whatever house this new user is sorted into.
+Voila! Now, the user’s sorted house is stored in the @sorted_house CLI instance variable, accessible to all methods within the CLI object. If we instantiate a new CLI instance and run the “sort” method, @sorted_house will change to whatever house this new user is sorted into.
 
 ![](https://i.imgur.com/jlUHyQCl.png)
 
