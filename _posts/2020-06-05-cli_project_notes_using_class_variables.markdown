@@ -30,9 +30,9 @@ However, this approach created one (rather large) problem. As the CLI became mor
 
 This was clunky and confusing. The sorted_house variable wasn’t even being used in most of these methods – it was just being passed around so it could be used in the exit method. This isn’t DRY. More importantly, if the application became even more complex, or if we needed to pass in other variables into these methods, this code would get impossibly confusing very quickly. There must be a better way! There is, and it’s one of the great things about Ruby object-oriented programming: an instance variable.
 
-The previous variable, sorted_house, had a limited scope – it could only be used within the method in which it was created, which is why it had to be manually passed into every other method called within the CLI object. An instance variable, however, has a broader scope -- it is accessible to all methods in our CLI instance, without needing to pass it into every method. Perfect!
+The previous variable, sorted_house, had a limited scope – it could only be used within the method in which it was created, which is why it had to be manually passed into every other method within the CLI class. An instance variable, however, has a broader scope -- it is accessible to all methods in our CLI class, without needing to pass it into every method as an argument. Perfect!
 
-Therefore, I assigned a new variable in the “sort” method: @sorted_house.
+Therefore, I assigned a new instance variable in the “sort” method: @sorted_house.
 
 ![](https://i.imgur.com/reAE3gQl.png)
 
@@ -44,7 +44,7 @@ Finally, I rewrote the "normal_exit" method to utilize the @sorted_house instanc
 
 ![](https://i.imgur.com/zYRsKSJl.png)
 
-Voila! Now, the user’s sorted house is stored in the @sorted_house CLI instance variable, accessible to all methods within the CLI object. If we instantiate a new CLI instance and run the “sort” method, @sorted_house will change to whatever house this new user is sorted into.
+Voila! Now, the user’s sorted house is stored in the @sorted_house instance variable, accessible to all methods called by this instance of the CLI class. If we instantiate a new CLI and run the “sort” method, @sorted_house will change to whatever house this new user is sorted into.
 
 ![](https://i.imgur.com/jlUHyQCl.png)
 
