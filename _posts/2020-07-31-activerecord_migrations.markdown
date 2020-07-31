@@ -1,7 +1,7 @@
 ---
 layout: post
-title:      "ActiveRecord Migrations"
-date:       2020-07-31 18:57:10 +0000
+title:      "Sinatra project notes: ActiveRecord migrations"
+date:       2020-07-31 14:57:11 -0400
 permalink:  activerecord_migrations
 ---
 
