@@ -272,7 +272,7 @@ export default CounterApp
 
 This seems logical enough. At first glance, it appears as if the following actions are happening in order: When we click “Click Me!”, the number of clicks in our component state is incremented by one, and then, we immediately check for whether this number of clicks is equal to 10. If so, state.explosion is set to “true”, our component re-renders, displaying “Boom!”. But this is not what happens. Instead, we get this:
 
-[](https://youtu.be/LxFm9M43-fw)
+[https://youtu.be/LxFm9M43-fw](https://youtu.be/LxFm9M43-fw)
 
 That’s not right! It shows the number 10 on our counter, and then, on the 11th click, our app renders “Boom!”.  Why??
 
@@ -347,6 +347,6 @@ export default CounterApp
 
 You may be wondering why we don’t see the number “10” appear on our counter before we see “Boom!”. After all, doesn’t our component display the number of clicks? The reason for this is that it never gets the chance to display the number “10”. When the component’s state is updated, React triggers a re-render (which simply means that the “render” method runs again). Thus, when this.state.clicks is updated to 10, React revisits the “render” method. It sees the conditional “else if (this.state.clicks === 10) …” and renders the return value of that conditional (Boom!). It never even reaches the counter, which is found in the “else” statement. The DOM updates, that is, the counter and “Click Me!” button are removed and replaced by “Boom!”
 
-[](https://youtu.be/aHsDkidyccw)
+[https://youtu.be/aHsDkidyccw](https://youtu.be/aHsDkidyccw)
 
 
