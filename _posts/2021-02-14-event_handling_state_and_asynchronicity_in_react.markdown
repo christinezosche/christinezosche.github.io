@@ -284,66 +284,11 @@ If we click the button one more time, we get the following:
 
 ![](https://i.imgur.com/rWI1HHbl.png)
 
-“explosion” now equals “true”, but our number of clicks is 11. Clearly, our setState calls are not happening instantaneously. While in this simple example, we can avoid using this.state.explosion altogether and alter our render method instead: 
+“explosion” now equals “true”, but our number of clicks is 11. Clearly, our setState calls are not happening instantaneously. 
 
-```
-import React, { Component } from "react";
+How do we set the state so that it updates at the time we want? We've already seen that we can't call setState in two separate statements in an event handler method, because they will update asynchronously. If we put a setState method in the render method, we will create an infinite loop, as every change in state causes a re-render. 
 
-class CounterApp extends Component {
-
-    constructor () {
-        super()
-        this.state = {
-            clicks: 0,
-            hasBeenClicked: false
-        };
-    }
-
-    toggleHasBeenClicked = () => {
-        this.setState({
-            hasBeenClicked: true
-        })
-    }
-
-    addClick = () => {
-        this.setState(previousState => {
-            return {
-            clicks: previousState.clicks + 1
-            }
-        })
-    }
-
-    render () {
-        if (this.state.hasBeenClicked === false) {
-            return (
-                <div>
-                <button onClick={this.toggleHasBeenClicked}>Click Me First!</button>
-                </div>
-            )
-        }
-
-        else if (this.state.clicks === 10) {
-            return (
-                <h1>Boom!</h1>
-            )
-        }
-
-        else {
-        return (
-            <div>
-            <h1>{this.state.clicks}</h1>
-            <button onClick={this.addClick}>Click Me!</button>
-            </div>
-        )
-        }
-    }
-
-}
-
-export default CounterApp
-```
-
-But let's assume that our app is more complex, and that we want to manage this rendering with our "explosion" boolean in state. How do we set the state so that it updates at the time we want? We've already seen that we can't call setState in two separate statements in an event handler method, because they will update asynchronously. If we put a setState method in the render method, we will create an infinite loop, as every change in state causes a re-render. The solution is to call another setState *with* the first setState, more specifically, as an argument in the first setState.
+The solution is to call another setState *with* the first setState, more specifically, as an argument in the first setState.
 
 We can write our component like this:
 
